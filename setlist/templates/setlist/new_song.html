@@ -1,0 +1,13 @@
+{% extends 'setlist/base.html' %}
+
+{% block content %}
+  <p><h5>Add a new song: </h5></p>
+
+  <form action="{% url 'setlist:new_song' %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-sm btn-primary" style="background-color:#6F5894;
+      border-color:#6F5894;" name="submit">Add song!</button>
+  </form>
+
+{% endblock content %}

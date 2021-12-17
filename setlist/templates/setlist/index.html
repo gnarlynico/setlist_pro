@@ -1,0 +1,22 @@
+{% extends 'setlist/base.html' %}
+
+{% block page_header %}
+  <body style="background-color:#E5FFFC";>
+  </body>
+  <div class="jumbotron">
+    <h1 class="display-3">Get ready to rock!</h1>
+    
+    <p class="lead">Create a customizable track list where
+      you can store any and all information about a song. Whether you are
+      building a list of cover songs, or creating original song concepts,
+      organize everything you need to keep your band on the same page and
+      in tune with SetList!</p>
+    {% if user.is_authenticated %}
+    {% else %}
+      <a class="btn btn-lg btn-primary" style="background-color:#6F5894;
+        border-color:#6F5894" href="{% url 'users:register' %}"
+        role="button">Register &raquo;</a>
+    {% endif %}
+  </div>
+
+{% endblock page_header %}

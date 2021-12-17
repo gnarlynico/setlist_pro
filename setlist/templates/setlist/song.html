@@ -1,0 +1,40 @@
+{% extends 'setlist/base.html' %}
+
+
+{% block page_header %}
+  <h2>Song: {{ song }}</h2>
+{% endblock page_header %}
+
+{% block content %}
+  <div class="container">
+    <div class="card-header"><h5>Song Info:</h5>
+    </div>
+  <ul class="list-group list-group-flush">
+  {% for entry in entries %}
+    <li class="list-group-item d-flex justify-content-between
+      align-left"><h5>
+      <a style="color:#000000;"
+        href="{% url 'setlist:entry' song.id entry.id %}">{{ entry }}</h5></a>
+      <div class="btn-group">
+        <a class="btn btn-sm btn-outline-warning" style="border-color:#6F5894;
+          color:#6F5894;"
+          href="{% url 'setlist:edit_entry' song.id entry.id %}">
+          edit</a></small>
+        <a class="btn btn-sm btn-outline-danger" style="border-color:#6F5894;
+          color:#6F5894;"
+          href="{% url 'setlist:delete_entry' song.id entry.id %}">delete
+          </a></small>
+      </div>
+    </li>
+  {% empty %}
+    <li class="list-group-item"><h6>No entries have been made yet.</h6></li>
+  {% endfor %}
+  </ul>
+
+  <a class="btn btn-sm btn-primary" style="background-color:#6F5894;
+    border-color:#6F5894;"
+    href="{% url 'setlist:new_entry' song.id %}">Add a new info category
+    </a>
+  </div>
+  
+{% endblock content %}

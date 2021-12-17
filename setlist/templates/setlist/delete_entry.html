@@ -1,0 +1,23 @@
+{% extends 'setlist/base.html' %}
+
+{% block page_header %}
+
+<p><h4>{{ song }}</h4></p>
+
+{% endblock page_header %}
+
+{% block content %}
+<div class"main">
+  <form method="POST">
+    {% csrf_token %}
+    Are you sure you want to delete {{ entry }}?
+    <p></p>
+    <p><input type="submit" class="btn btn-sm btn-primary"
+      style="background-color:#6F5894; border-color:#6F5894;" value="Yes" />
+    <a class="btn btn-sm btn-primary" style="background-color:#6F5894;
+      border-color:#6F5894;"
+      href="{% url 'setlist:song' song.id %}">No</a></p>
+  </form>
+</div>
+
+{% endblock content %}

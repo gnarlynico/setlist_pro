@@ -1,0 +1,18 @@
+{% extends 'setlist/base.html' %}
+
+{% block page_header %}
+  <h3>{{ song }}</h3>
+{% endblock page_header %}
+
+{% block content %}
+
+  <p><h5>{{ entry }}:</h5></p>
+  <form action="{% url 'setlist:new_detail' song.id entry.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-sm btn-primary" style="background-color:#6F5894;
+      border-color:#6F5894;" name='submit'>Add info!</button>
+  </form>
+
+{% endblock content %}
+    

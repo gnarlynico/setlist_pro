@@ -1,0 +1,26 @@
+{% extends 'setlist/base.html' %}
+
+
+{% block page_header %}
+  <h2>Song: {{ song }}</h2>
+{% endblock page_header %}
+
+{% block content %}
+  <div class="card mb-3">
+    <h5 class="card-header">
+      {{ entry }}:
+    </h5>
+  <div class="card-body">
+    <a class="btn btn-sm btn-primary" style="background-color:#6F5894;
+      border-color:#6F5894;"
+      href="{% url 'setlist:new_detail' song.id entry.id %}">Add something
+      new</a>
+    {% for detail in details %}
+      <a class="btn btn-sm btn-primary" style="background-color:#6F5894;
+        border-color:#6F5894;"
+        href="{% url 'setlist:edit_detail' song.id entry.id detail.id %}">
+        Edit</a></p>
+      {{ detail.text|linebreaks }}
+    {% endfor %}
+  </div>
+{% endblock content %}
